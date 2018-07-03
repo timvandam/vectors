@@ -20,8 +20,8 @@ const multipliedVectors = my2DVector.multiply(2);
 
 // These functions return a number
 const dotProduct = my3DVector.dot(myOther3DVector); // this is the dot product
-const magnitude = myVector.magnitude();
+const magnitude = my3DVector.magnitude();
 
 // This is also possible!
-const modified2DVector = my2DVector.multiply( my2DVector.multiply(1.2).add(other2DVector).magnitude() );
+const modified2DVector = my2DVector.multiply(1.2).add(other2DVector).substract(my2DVector).dot();
 ```

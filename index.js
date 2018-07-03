@@ -1,5 +1,3 @@
-// TODO: Research Vectors, chrome bookmark (cross product & angle between vectors)
-
 function Vector(size) {
   // Construct
   this.size = size;
@@ -63,7 +61,7 @@ function Vector(size) {
   };
 
   this.magnitude = () => {
-    return this.data.reduce((x, y) => Math.sqrt( x ** 2 + y ** 2));
+    return this.data.reduce((x, y) => Math.sqrt(x ** 2 + y ** 2));
   };
 
   function isVector(vector) {
@@ -74,4 +72,5 @@ function Vector(size) {
 const Vector2D = Vector.bind({}, 2);
 const Vector3D = Vector.bind({}, 3);
 
-module.exports = { Vector2D, Vector3D };
+if (typeof module !== 'undefined' && module.exports)
+  module.exports = { Vector2D, Vector3D };
