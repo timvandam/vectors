@@ -13,12 +13,15 @@ const my3DVector = new Vector3D(14, 42, 61);
 const myOther3DVector = new Vector3D(67, 14, 51);
 
 
-// these functions return a new vector.
+// These functions return a new vector.
 const addedVectors = my2DVector.add(other2DVector);
 const substractedVectors = my3DVector.substract(myOther3DVector);
 const multipliedVectors = my2DVector.multiply(2);
 
-// these functions return a number
+// These functions return a number
 const dotProduct = my3DVector.dot(myOther3DVector); // this is the dot product
 const magnitude = myVector.magnitude();
+
+// This is also possible!
+const modified2DVector = my2DVector.multiply( my2DVector.multiply(1.2).add(other2DVector).magnitude() );
 ```
