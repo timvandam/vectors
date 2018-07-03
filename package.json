@@ -1,0 +1,8 @@
+{
+  "name": "vectors",
+  "version": "1.0.0",
+  "description": "Easy to use vectors",
+  "main": "index.js",
+  "author": "Tim van Dam",
+  "license": "MIT"
+}
