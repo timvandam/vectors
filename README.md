@@ -14,14 +14,14 @@ const myOther3DVector = new Vector3D(67, 14, 51);
 
 
 // These functions return a new vector.
-const addedVectors = my2DVector.add(other2DVector);
-const substractedVectors = my3DVector.substract(myOther3DVector);
-const multipliedVectors = my2DVector.multiply(2);
+const addedVectors = my2DVector.add(other2DVector); // .add === .plus
+const substractedVectors = my3DVector.subtract(myOther3DVector); // .subtract === .sub === .minus === .min
+const multipliedVectors = my2DVector.multiply(2); // .multiply === .mult === .times
 
 // These functions return a number
 const dotProduct = my3DVector.dot(myOther3DVector); // this is the dot product
 const magnitude = my3DVector.magnitude();
 
 // This is also possible!
-const modified2DVector = my2DVector.multiply(1.2).add(other2DVector).substract(my2DVector).dot();
+const modified2DVector = my2DVector.multiply(1.2).add(other2DVector).subtract(my2DVector).dot();
 ```
