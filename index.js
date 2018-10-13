@@ -19,7 +19,7 @@ function isVector(vector) {
 }
 
 // Vector functions
-Vector.prototype.add = vector => {
+Vector.prototype.add = function(vector) {
   if (!isVector(vector))
     throw new Error('No valid vector provided');
 

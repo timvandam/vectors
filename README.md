@@ -23,5 +23,5 @@ const dotProduct = my3DVector.dot(myOther3DVector); // this is the dot product
 const magnitude = my3DVector.magnitude();
 
 // This is also possible!
-const modified2DVector = my2DVector.multiply(1.2).add(other2DVector).subtract(my2DVector).dot();
+const modified2DVector = my2DVector.multiply(1.2).add(other2DVector).subtract(my2DVector).dot(other2DVector);
 ```
