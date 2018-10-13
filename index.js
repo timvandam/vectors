@@ -1,7 +1,7 @@
-function Vector(size) {
-  // Construct
+// Vector constructor
+function Vector(size, ...data) {
   this.size = size;
-  this.data = Object.values(arguments).slice(1);
+  this.data = data;
 
   // Check for errors
   if (!this.size || isNaN(this.size))
@@ -12,61 +12,70 @@ function Vector(size) {
 
   if (this.size !== this.data.length)
     throw new Error('Too much or not enough data provided');
+};
 
-  // Functions
-  this.add = vector => {
-    if (!isVector(vector))
-      throw new Error('No valid vector provided');
+function isVector(vector) {
+  return vector && vector instanceof Vector;
+}
 
-    if (vector.size !== this.size)
-      throw new Error('Vectors not of equal size');
+// Vector functions
+Vector.prototype.add = vector => {
+  if (!isVector(vector))
+    throw new Error('No valid vector provided');
 
-    if (vector.data.length !== this.data.length)
-      throw new Error('Vectors not of equal length');
+  if (vector.size !== this.size)
+    throw new Error('Vectors not of equal size');
 
-    return new Vector(this.size, ...this.data.map((value, index) => value + vector.data[index]));
-  };
+  if (vector.data.length !== this.data.length)
+    throw new Error('Vectors not of equal length');
 
-  this.substract = vector => {
-    if (!isVector(vector))
-      throw new Error('No valid vector provided');
+  return new Vector(this.size, ...this.data.map((value, index) => value + vector.data[index]));
+};
 
-    if (vector.size !== this.size)
-      throw new Error('Vectors not of equal size');
+Vector.prototype.plus = Vector.prototype.add;
 
-    if (vector.data.length !== this.data.length)
-      throw new Error('Vectors not of equal length');
+Vector.prototype.subtract = function(vector) {
+  if (!isVector(vector))
+    throw new Error('No valid vector provided');
 
-    return new Vector(this.size, ...this.data.map((value, index) => value - vector.data[index]));
-  };
+  if (vector.size !== this.size)
+    throw new Error('Vectors not of equal size');
 
-  this.multiply = scalar => {
-    if (isNaN(scalar))
-      throw new Error('Invalid scalar');
+  if (vector.data.length !== this.data.length)
+    throw new Error('Vectors not of equal length');
 
-    return new Vector(this.size, ...this.data.map(value => value * scalar));
-  };
+  return new Vector(this.size, ...this.data.map((value, index) => value - vector.data[index]));
+};
 
-  this.dot = vector => {
-    if (!isVector(vector))
-      throw new Error('No valid vector provided');
+Vector.prototype.sub = Vector.prototype.subtract;
+Vector.prototype.minus = Vector.prototype.subtract;
+Vector.prototype.min = Vector.prototype.subtract;
 
-    if (vector.size !== this.size)
-      throw new Error('Vectors not of equal size');
+Vector.prototype.multiply = function(scalar) {
+  if (isNaN(scalar))
+    throw new Error('Invalid scalar');
 
-    if (vector.data.length !== this.data.length)
-      throw new Error('Vectors not of equal length');
+  return new Vector(this.size, ...this.data.map(value => value * scalar));
+};
 
-    return this.data.map((value, index) => value * vector.data[index]).reduce((x, y) => x + y);
-  };
+Vector.prototype.mult = Vector.prototype.multiply;
+Vector.prototype.times = Vector.prototype.multiply;
 
-  this.magnitude = () => {
-    return this.data.reduce((x, y) => Math.sqrt(x ** 2 + y ** 2));
-  };
+Vector.prototype.dot = function(vector) {
+  if (!isVector(vector))
+    throw new Error('No valid vector provided');
 
-  function isVector(vector) {
-    return vector && vector instanceof Vector;
-  }
+  if (vector.size !== this.size)
+    throw new Error('Vectors not of equal size');
+
+  if (vector.data.length !== this.data.length)
+    throw new Error('Vectors not of equal length');
+
+  return this.data.map((value, index) => value * vector.data[index]).reduce((x, y) => x + y);
+};
+
+Vector.prototype.magnitude = function() {
+  return this.data.reduce((x, y) => Math.sqrt(x ** 2 + y ** 2));
 };
 
 const Vector2D = Vector.bind({}, 2);
