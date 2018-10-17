@@ -12,7 +12,7 @@ function Vector(size, ...data) {
 
   if (this.size !== this.data.length)
     throw new Error('Too much or not enough data provided');
-};
+}
 
 function isVector(vector) {
   return vector && vector instanceof Vector;
